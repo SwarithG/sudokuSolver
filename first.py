@@ -4,6 +4,19 @@ import time
 """
 This is a working version however, due to validation logic being excessive time complexity is inefficient
 """
+def print_board(board):
+    print("\n  " + "-" * 25)
+    for i in range(9):
+        print(" | ", end="")
+        for j in range(9):
+            num = board[i][j]
+            print(num if num != 0 else ".", end=" ")
+            if (j + 1) % 3 == 0:
+                print("| ", end="")
+        print()
+        if (i + 1) % 3 == 0:
+            print("  " + "-" * 25)
+
 def solve_sudoku(board):
     for row in range(9):
         for col in range(9):
@@ -32,20 +45,21 @@ if __name__=="__main__":
         [0,4,0,0,5,0,0,3,6],
         [7,0,3,0,1,8,0,0,0]
     ]
-    # print(validateBoard(board))
+
+    print("\nInitial Puzzle:")
+    print_board(board)
 
     st = time.time()
-
     sol = solve_sudoku(board)
-
     et = time.time()
     
     if not sol:
-        print("Unsolvable")
-    for i in sol:
-        print(i)
+        print("\nUnsolvable")
+    else:
+        print("\nSolution:")
+        print_board(sol)
 
-    print(f"\n\n\n\tTime taken : {et-st} seconds")
+    print(f"\nTime taken : {et-st:.6f} seconds")
 
 
     zeroes = [
