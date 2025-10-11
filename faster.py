@@ -54,6 +54,6 @@ if __name__=="__main__":
         print("\nUnsolvable")
     else:
         print("\nSolution:")
-        print_board(solved)  # Print the modified board directly, not the boolean return value
+        print_board(solved) 
 
     print(f"\nTime taken : {et-st:.6f} seconds")
